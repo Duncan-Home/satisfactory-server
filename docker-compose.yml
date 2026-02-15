@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   satisfactory-server:
     image: wolveix/satisfactory-server:latest
