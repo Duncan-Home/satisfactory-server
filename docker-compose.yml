@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  satisfactory-server:
+    image: wolveix/satisfactory-server:latest
+    container_name: satisfactory-server
+    hostname: satisfactory-server
+    restart: unless-stopped
+    ports:
+      - "7777:7777/udp"
+      - "15000:15000/udp"
+      - "15777:15777/udp"
+    volumes:
+      - ./config:/config
+    environment:
+      - MAXPLAYERS=8
+      - PUID=1000
+      - PGID=1000
+      - ROOTLESS=false
+      - STEAMBETA=false
+      - AUTOPAUSE=true
+      - AUTOSAVENUM=5
+      - AUTOSAVEINTERVAL=300
+      - CRASHREPORT=true
+      - DEBUG=false
+      - NETWORKQUALITY=3
+      - SERVERGAMEPORT=7777
+      - SERVERBEACONPORT=15000
+      - SERVERQUERYPORT=15777
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
