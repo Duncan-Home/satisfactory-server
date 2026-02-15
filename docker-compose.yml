@@ -12,6 +12,7 @@ services:
     volumes:
       - ./config:/config
     environment:
+      - SERVER_IP=100.120.36.88 # Tailscale IP to avoid docker internal IP issues
       - MAXPLAYERS=8
       - PUID=1000
       - PGID=1000
