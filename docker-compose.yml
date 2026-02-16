@@ -4,15 +4,11 @@ services:
     container_name: satisfactory-server
     hostname: satisfactory-server
     restart: unless-stopped
-    ports:
-      - "7777:7777/udp"
-      - "7777:7777/tcp"
+    # 1. Host Mode: Bypasses Docker Bridge/NAT entirely
+    network_mode: host
     volumes:
       - ./config:/config
     environment:
-      - TIMEOUT=300 # Forces the script to set "ConnectionTimeout=300.0"
-      - NETWORKQUALITY=1 # Keep this at Medium for stability over VPN
-      - SERVER_IP=100.120.36.88 # Tailscale IP to avoid docker internal IP issues
       - MAXPLAYERS=8
       - PUID=1000
       - PGID=1000
@@ -23,6 +19,8 @@ services:
       - AUTOSAVEINTERVAL=300
       - CRASHREPORT=true
       - DEBUG=false
+      - NETWORKQUALITY=2
+      - TIMEOUT=300 
     logging:
       driver: "json-file"
       options:
