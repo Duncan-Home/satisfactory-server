@@ -19,7 +19,7 @@ services:
       - AUTOSAVEINTERVAL=300
       - CRASHREPORT=true
       - DEBUG=false
-      - NETWORKQUALITY=2
+      - NETWORKQUALITY=3
       - TIMEOUT=300 
     logging:
       driver: "json-file"
