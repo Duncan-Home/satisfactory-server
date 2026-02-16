@@ -7,8 +7,6 @@ services:
     ports:
       - "7777:7777/udp"
       - "7777:7777/tcp"
-      - "15000:15000/udp"
-      - "15777:15777/udp"
     volumes:
       - ./config:/config
     environment:
@@ -25,9 +23,6 @@ services:
       - AUTOSAVEINTERVAL=300
       - CRASHREPORT=true
       - DEBUG=false
-      - SERVERGAMEPORT=7777
-      - SERVERBEACONPORT=15000
-      - SERVERQUERYPORT=15777
     logging:
       driver: "json-file"
       options:
